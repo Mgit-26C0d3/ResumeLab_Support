@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume Lab Support</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #fafafa;
+    --fg: #1d1d1f;
+    --muted: #6e6e73;
+    --card: #ffffff;
+    --line: #e5e5ea;
+    --accent: #2f6fed;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #161617;
+      --fg: #f5f5f7;
+      --muted: #98989d;
+      --card: #1f1f21;
+      --line: #333336;
+      --accent: #6ea0ff;
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 64px 24px 80px;
+  }
+  header { margin-bottom: 48px; }
+  h1 {
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .tagline {
+    color: var(--muted);
+    font-size: 17px;
+    margin-top: 6px;
+  }
+  h2 {
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 40px 0 12px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 20px 24px;
+  }
+  .card + .card { margin-top: 12px; }
+  .card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .card p { color: var(--muted); font-size: 15px; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .contact {
+    font-size: 17px;
+  }
+  footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 13px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Resume Lab</h1>
+    <p class="tagline">Support for the Resume Lab app for Mac</p>
+  </header>
+
+  <h2>Contact</h2>
+  <div class="card contact">
+    <p>Questions, bug reports, or feature requests are always welcome.</p>
+    <p style="margin-top:8px;"><a href="mailto:madebymikesupport@icloud.com">madebymikesupport@icloud.com</a></p>
+    <p style="margin-top:8px;">We aim to reply within two business days.</p>
+  </div>
+
+  <h2>Frequently asked questions</h2>
+
+  <div class="card">
+    <h3>What does Resume Lab run on?</h3>
+    <p>Resume Lab is a native Mac app available on the Mac App Store. It requires macOS 26 or later.</p>
+  </div>
+
+  <div class="card">
+    <h3>Where are my resumes stored?</h3>
+    <p>Resumes are saved as ordinary document files (.resume) wherever you choose on your Mac, and export as standard PDF. The app has no network features, so nothing you type ever leaves your machine.</p>
+  </div>
+
+  <div class="card">
+    <h3>What data does Resume Lab collect?</h3>
+    <p>None. Resume Lab has no accounts, no analytics, and no tracking of any kind.</p>
+  </div>
+
+  <footer>
+    <p>Copyright &copy; 2026 Michael Lameri. All rights reserved.</p>
+  </footer>
+
+</div>
+</body>
+</html>
