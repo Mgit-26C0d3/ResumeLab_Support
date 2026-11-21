@@ -1,122 +1,226 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Resume Lab Support</title>
+<meta name="description" content="Help with Resume Lab for Mac: variants, the job match, continuous pages, headings in your language, Finder previews, exporting and printing, and how to contact support.">
+<meta name="theme-color" content="#ffffff">
+<meta name="color-scheme" content="light">
+<link rel="icon" type="image/png" href="media/favicon-64.png">
+<link rel="apple-touch-icon" href="media/apple-touch-icon.png">
 <style>
   :root {
-    color-scheme: light dark;
-    --bg: #fafafa;
-    --fg: #1d1d1f;
+    --accent: #6b3fd4;
+    --ink: #1d1d1f;
     --muted: #6e6e73;
-    --card: #ffffff;
-    --line: #e5e5ea;
-    --accent: #2f6fed;
+    --soft: #f5f5f7;
+    --wash: #f4f1fc;
+    --hairline: #e5e5ea;
+    --radius: 18px;
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #161617;
-      --fg: #f5f5f7;
-      --muted: #98989d;
-      --card: #1f1f21;
-      --line: #333336;
-      --accent: #6ea0ff;
-    }
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: var(--bg);
-    color: var(--fg);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-  .wrap {
-    max-width: 640px;
-    margin: 0 auto;
-    padding: 64px 24px 80px;
-  }
-  header { margin-bottom: 48px; }
-  h1 {
-    font-size: 34px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-  }
-  .tagline {
-    color: var(--muted);
-    font-size: 17px;
-    margin-top: 6px;
-  }
-  h2 {
-    font-size: 21px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    margin: 40px 0 12px;
-  }
-  .card {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 20px 24px;
-  }
-  .card + .card { margin-top: 12px; }
-  .card h3 {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 4px;
-  }
-  .card p { color: var(--muted); font-size: 15px; }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body { margin: 0; background: #fff; color: var(--ink); font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
   a { color: var(--accent); text-decoration: none; }
   a:hover { text-decoration: underline; }
-  .contact {
-    font-size: 17px;
-  }
-  footer {
-    margin-top: 64px;
-    padding-top: 24px;
-    border-top: 1px solid var(--line);
-    color: var(--muted);
-    font-size: 13px;
-  }
+  h1, h2, h3 { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif; margin: 0; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+  .narrow { max-width: 820px; margin: 0 auto; padding: 0 24px; }
+
+  /* Nav */
+  nav { position: sticky; top: 0; z-index: 10; background: rgba(255, 255, 255, .82); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid var(--hairline); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 56px; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 10px; color: var(--ink); font-weight: 600; font-size: 17px; white-space: nowrap; }
+  .brand:hover { text-decoration: none; }
+  .brand img { width: 30px; height: 30px; border-radius: 7px; }
+  .nav-links { display: flex; align-items: center; gap: 22px; font-size: 14px; white-space: nowrap; }
+  .nav-links a { color: var(--ink); opacity: .8; }
+  .nav-links a:hover { opacity: 1; text-decoration: none; }
+  .nav-links a[aria-current] { opacity: 1; font-weight: 600; }
+  .nav-links .pill { background: var(--accent); color: #fff; opacity: 1; padding: 6px 14px; border-radius: 999px; font-weight: 600; }
+  @media (max-width: 640px) { .nav-links .hide-small { display: none; } .nav-links { gap: 16px; } }
+
+  /* Header */
+  .head { padding: 72px 0 40px; background: linear-gradient(180deg, var(--wash) 0%, #fff 100%); }
+  .head h1 { font-size: clamp(38px, 6vw, 56px); line-height: 1.05; letter-spacing: -.03em; font-weight: 700; }
+  .head h1 .accent { color: var(--accent); }
+  .head p { color: var(--muted); font-size: 20px; margin: 14px 0 0; max-width: 600px; }
+
+  /* Contact */
+  .contact { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; background: var(--ink); color: #fff; border-radius: var(--radius); padding: 26px 30px; margin-top: 8px; }
+  .contact h2 { font-size: 21px; letter-spacing: -.01em; }
+  .contact p { margin: 4px 0 0; color: rgba(255, 255, 255, .7); font-size: 15px; }
+  .contact .mail { background: #fff; color: var(--ink); font-weight: 600; font-size: 15px; padding: 11px 20px; border-radius: 999px; white-space: nowrap; }
+  .contact .mail:hover { text-decoration: none; background: var(--wash); }
+
+  /* Jump links */
+  .jump { display: flex; flex-wrap: wrap; gap: 8px; margin: 40px 0 0; padding: 0; list-style: none; }
+  .jump a { display: inline-block; font-size: 14px; color: var(--ink); background: var(--soft); border-radius: 999px; padding: 7px 14px; }
+  .jump a:hover { text-decoration: none; background: var(--wash); color: var(--accent); }
+
+  /* FAQ */
+  .group { padding-top: 56px; scroll-margin-top: 60px; }
+  .group > h2 { font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+  .qa { background: var(--soft); border-radius: var(--radius); padding: 22px 26px; }
+  .qa + .qa { margin-top: 12px; }
+  .qa h3 { font-size: 18px; font-weight: 600; letter-spacing: -.01em; margin-bottom: 6px; }
+  .qa .new { display: inline-block; vertical-align: 2px; margin-left: 8px; font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--accent); background: #fff; border-radius: 999px; padding: 2px 8px; }
+  .qa p { margin: 0; color: #424245; font-size: 16px; }
+  .qa p + p { margin-top: 8px; }
+  .qa b { color: var(--ink); font-weight: 600; }
+  kbd { white-space: nowrap; font-family: inherit; font-size: 14px; background: #fff; border: 1px solid var(--hairline); border-bottom-width: 2px; border-radius: 6px; padding: 0 6px; }
+
+  .closing { text-align: center; padding: 72px 0 88px; }
+  .closing h2 { font-size: 28px; letter-spacing: -.02em; }
+  .closing p { color: var(--muted); margin: 10px 0 0; }
+
+  footer { border-top: 1px solid var(--hairline); padding: 28px 0 40px; font-size: 13px; color: var(--muted); }
+  .foot { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .foot a { color: var(--muted); margin-left: 18px; }
+  .foot a:first-child { margin-left: 0; }
+  @media (max-width: 560px) { .qa { padding: 20px; } .contact { padding: 24px; } .head { padding-top: 56px; } }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <header>
-    <h1>Resume Lab</h1>
-    <p class="tagline">Support for the Resume Lab app for Mac</p>
-  </header>
-
-  <h2>Contact</h2>
-  <div class="card contact">
-    <p>Questions, bug reports, or feature requests are always welcome.</p>
-    <p style="margin-top:8px;"><a href="mailto:madebymikesupport@icloud.com">madebymikesupport@icloud.com</a></p>
-    <p style="margin-top:8px;">We aim to reply within two business days.</p>
+<nav aria-label="Main">
+  <div class="wrap nav-inner">
+    <a class="brand" href="app.html"><img src="media/icon-256.png" alt="" width="30" height="30">Resume Lab</a>
+    <div class="nav-links">
+      <a class="hide-small" href="app.html#features">Features</a>
+      <a class="hide-small" href="app.html#templates">Templates</a>
+      <a href="index.html" aria-current="page">Support</a>
+      <a class="pill" href="https://apps.apple.com/au/app/resumelab/id6792909760?mt=12" rel="noopener">Mac App Store</a>
+    </div>
   </div>
+</nav>
 
-  <h2>Frequently asked questions</h2>
-
-  <div class="card">
-    <h3>What does Resume Lab run on?</h3>
-    <p>Resume Lab is a native Mac app available on the Mac App Store. It requires macOS 26 or later.</p>
+<header class="head">
+  <div class="narrow">
+    <h1>How can we <span class="accent">help</span>?</h1>
+    <p>Answers to common questions about Resume Lab for Mac, including everything new in version 1.2.</p>
   </div>
+</header>
 
-  <div class="card">
-    <h3>Where are my resumes stored?</h3>
-    <p>Resumes are saved as ordinary document files (.resume) wherever you choose on your Mac, and export as standard PDF. The app has no network features, so nothing you type ever leaves your machine.</p>
+<main class="narrow">
+
+  <section class="contact" aria-labelledby="contact-title">
+    <div>
+      <h2 id="contact-title">Questions, bugs or ideas?</h2>
+      <p>Email us and we’ll reply within two business days.</p>
+    </div>
+    <a class="mail" href="mailto:madebymikesupport@icloud.com">madebymikesupport@icloud.com</a>
+  </section>
+
+  <ul class="jump" aria-label="Jump to a topic">
+    <li><a href="#basics">The basics</a></li>
+    <li><a href="#new">New in 1.2</a></li>
+    <li><a href="#export">Exporting and printing</a></li>
+    <li><a href="#privacy">Privacy</a></li>
+  </ul>
+
+  <section class="group" id="basics" aria-labelledby="basics-title">
+    <h2 id="basics-title">The basics</h2>
+
+    <div class="qa">
+      <h3>What does Resume Lab run on?</h3>
+      <p>Resume Lab is a native Mac app on the Mac App Store. It needs macOS 26 or later. One purchase includes every template, with no subscription.</p>
+    </div>
+
+    <div class="qa">
+      <h3>Where are my resumes stored?</h3>
+      <p>Each resume is an ordinary document file (.resume) saved wherever you choose on your Mac, so you can keep it in iCloud Drive, back it up or copy it like any other file.</p>
+    </div>
+
+    <div class="qa">
+      <h3>How do I change template?</h3>
+      <p>In the inspector on the right, open the <b>Design</b> tab and click <b>Change…</b> under Template. Your words, colour and page size come with you, so you can try all nineteen in seconds.</p>
+    </div>
+
+    <div class="qa">
+      <h3>What is the ATS score?</h3>
+      <p>The score in the <b>ATS</b> tab checks your content against resume best practices, such as action verbs, numbers and bullet length, and shows a breakdown by category. It is separate from the job match, and it is a guide rather than a promise about any company’s hiring software.</p>
+    </div>
+  </section>
+
+  <section class="group" id="new" aria-labelledby="new-title">
+    <h2 id="new-title">New in 1.2</h2>
+
+    <div class="qa">
+      <h3>How does the job match work? <span class="new">New</span></h3>
+      <p>Open the <b>ATS</b> tab and paste the job ad into <b>Job match</b>. Resume Lab finds the skills, tools and phrases the ad asks for, tells the requirements from the nice-to-haves, and shows which ones your resume already covers. Click a missing keyword to go to where it belongs.</p>
+      <p>It all runs on your Mac. The ad is kept with your resume and is never uploaded anywhere.</p>
+    </div>
+
+    <div class="qa">
+      <h3>How do I tailor my resume for different jobs?</h3>
+      <p>Use variants. Click the menu at the top of the sidebar (it starts as <b>Main</b>) and choose <b>New Variant…</b> to make one. Each variant can show its own choice of roles and bullets, and has its own title, design and job ad. Anything you add appears in every variant, so they never drift apart.</p>
+    </div>
+
+    <div class="qa">
+      <h3>Can I make one long page instead of separate pages? <span class="new">New</span></h3>
+      <p>Yes. In the <b>Design</b> tab, turn on <b>Continuous page</b>. Your resume becomes a single page with no breaks, which suits sharing online. Turn it off to go back to A4 or US Letter pages.</p>
+    </div>
+
+    <div class="qa">
+      <h3>Can I write my resume in another language? <span class="new">New</span></h3>
+      <p>Yes. Choose <b>Headings &amp; Labels</b> in the sidebar and type your own words for every heading and label a template prints, such as “Berufserfahrung” for Experience. Leave a field empty to keep the template’s word.</p>
+    </div>
+
+    <div class="qa">
+      <h3>Why do my resume files show a preview in Finder? <span class="new">New</span></h3>
+      <p>Resume files now show their real first page as their icon. Select one and press <kbd>Space</kbd> to see it in Quick Look without opening the app. If previews don’t appear straight after updating, open Resume Lab once, then reopen the Finder window.</p>
+    </div>
+
+    <div class="qa">
+      <h3>Can new resumes start with my favourite template? <span class="new">New</span></h3>
+      <p>Yes. Choose <b>ResumeLab &gt; Settings</b> (<kbd>⌘,</kbd>) and pick the template, colour and page size every new resume starts with, and whether it starts as a continuous page. Each resume can still change its own design afterwards.</p>
+    </div>
+  </section>
+
+  <section class="group" id="export" aria-labelledby="export-title">
+    <h2 id="export-title">Exporting and printing</h2>
+
+    <div class="qa">
+      <h3>How do I export, share or print?</h3>
+      <p>Click <b>Export PDF</b> in the toolbar. Resume Lab suggests a proper file name, like “Jane Doe - Resume.pdf”. Share and Print sit next to it, so you can send your resume straight to Mail, Messages or AirDrop, or print exactly what you export.</p>
+    </div>
+
+    <div class="qa">
+      <h3>Can hiring software read my PDF?</h3>
+      <p>Yes. Every export is real, selectable, searchable text, never a picture of a page, with clickable email and web links. For the strictest application portals, a single-column template such as Plain, Classic or Granite is the safest choice.</p>
+    </div>
+
+    <div class="qa">
+      <h3>My resume looks slightly different since updating. Why?</h3>
+      <p>Version 1.2 fixed templates that left details out. Broadsheet now prints your contact details, Bond your job title, nine templates your education notes and Onyx your links. Long entries move to the next page instead of splitting, and blank entries no longer leave stray punctuation. A few resumes gain a page as a result; trimming a bullet or two usually brings it back.</p>
+    </div>
+  </section>
+
+  <section class="group" id="privacy" aria-labelledby="privacy-title">
+    <h2 id="privacy-title">Privacy</h2>
+
+    <div class="qa">
+      <h3>What data does Resume Lab collect?</h3>
+      <p>None. Resume Lab has no accounts, no analytics and no tracking of any kind, and nothing you type leaves your Mac. Read the <a href="privacy.html">privacy policy</a>.</p>
+    </div>
+  </section>
+
+  <section class="closing">
+    <h2>Still stuck?</h2>
+    <p>Write to <a href="mailto:madebymikesupport@icloud.com">madebymikesupport@icloud.com</a> and include your macOS version and what you were doing.</p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>Copyright © 2026 Michael Lameri. All rights reserved.</span>
+    <span><a href="app.html">Resume Lab</a><a href="privacy.html">Privacy Policy</a></span>
   </div>
+</footer>
 
-  <div class="card">
-    <h3>What data does Resume Lab collect?</h3>
-    <p>None. Resume Lab has no accounts, no analytics, and no tracking of any kind.</p>
-  </div>
-
-  <footer>
-    <p>Copyright &copy; 2026 Michael Lameri. All rights reserved.</p>
-  </footer>
-
-</div>
 </body>
 </html>
